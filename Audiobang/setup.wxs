@@ -1,0 +1,137 @@
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="C5E52683-7EC9-4629-9B31-2A1C070A3F31" UpgradeCode="857C880E-6EA6-4928-B6D2-324C76790CB7" Version="1.0.0.0" Name="AudioBang" Manufacturer="Zohan Haque" Language="1033">
+    <Package InstallerVersion="405" InstallScope="perMachine" InstallPrivileges="elevated" Compressed="yes" Manufacturer="Zohan Haque" />
+    <Media Cabinet="media1.cab" Id="1" EmbedCab="yes" />
+    <Icon Id="MyIcon" SourceFile="Icon.ico" />
+    <WixVariable Id="WixUIDialogBmp" Value="Wixbackground.png" />
+    <WixVariable Id="WixUIBannerBmp" Value="Wixheader.png" />
+    <WixVariable Id="WixUILicenseRtf" Value="License.rtf" />
+    <Property Id="ARPPRODUCTICON" Value="MyIcon" />
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="MenuAppFolder" Name="AudioBang" />
+      </Directory>
+      <Directory Id="DesktopFolder" Name="Desktop" />
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="MyAppFolder" Name="AudioBang">
+          <Directory Name="credits" Id="credits" />
+        </Directory>
+      </Directory>
+    </Directory>
+    <ComponentGroup Id="RemoveFolders">
+      <ComponentRef Id="Remove.MenuAppFolder" />
+      <ComponentRef Id="Remove.ProgramFilesFolder" />
+    </ComponentGroup>
+    <ComponentGroup Id="Credits">
+      <ComponentRef Id="CIdED226D48" />
+    </ComponentGroup>
+    <ComponentGroup Id="main files">
+      <ComponentRef Id="CIdB0966656" />
+      <ComponentRef Id="CId7D6604F2" />
+      <ComponentRef Id="CId4215FE38" />
+      <ComponentRef Id="CIdB109EA3B" />
+      <ComponentRef Id="CSCId2D0BCF43" />
+      <ComponentRef Id="CSCIdCD330619" />
+      <ComponentRef Id="CId7BE812A6" />
+      <ComponentRef Id="CId3C7317BF" />
+      <ComponentRef Id="CId4D0F8F0C" />
+      <ComponentRef Id="CIdD8A6B97E" />
+      <ComponentRef Id="CIdE0771283" />
+      <ComponentRef Id="CId4433B34F" />
+      <ComponentRef Id="CId0D95A003" />
+    </ComponentGroup>
+    <Feature Id="ProductFeature" Title="The Complete Package" Description="the complete package">
+      <ComponentGroupRef Id="RemoveFolders" />
+      <ComponentGroupRef Id="Credits" />
+      <ComponentGroupRef Id="main files" />
+    </Feature>
+    <Feature Id="CreditsFeature" Title="Credits" Description="the credits (used for credits and libaries for the repo)">
+      <ComponentGroupRef Id="RemoveFolders" />
+      <ComponentGroupRef Id="Credits" />
+    </Feature>
+    <UIRef Id="WixUI_FeatureTree" />
+    <DirectoryRef Id="ProgramFilesFolder">
+      <Component Id="Remove.ProgramFilesFolder" Guid="53F2260A-30CA-48AF-80C0-52AB669FFE0C">
+        <RemoveFolder Id="ProgramFilesFolder" On="uninstall" />
+        <RegistryValue Root="HKMU" Key="Software\[Manufacturer]\[ProductName]" Type="string" Value="" KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+    <DirectoryRef Id="MyAppFolder">
+      <Component Id="CId0D95A003" Guid="054B5259-4990-4777-AA7D-C5FEB8729837" Win64="no">
+        <File Id="FId8E14812D" Name="license.rtf" Source="C:\Users\zohan\Downloads\AudioBang\dist\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CId4433B34F" Guid="43F2760F-88F8-4F5B-A893-F8097E294626" Win64="no">
+        <File Id="FId63048BD9" Name="icon.ico" Source="C:\Users\zohan\Downloads\AudioBang\dist\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CIdE0771283" Guid="253BD3E2-2C25-4E29-93C6-CFB2A0822E1E" Win64="no">
+        <File Id="FId13B183E7" Name="setup.wxs" Source="C:\Users\zohan\Downloads\AudioBang\dist\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CIdD8A6B97E" Guid="3B5E9CE6-A682-4A1D-8CBA-1F2A167B0981" Win64="no">
+        <File Id="FId6F93E305" Name="wixheader.png" Source="C:\Users\zohan\Downloads\AudioBang\dist\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CId4D0F8F0C" Guid="18B98983-EF41-411E-AABC-F0FE747F8C43" Win64="no">
+        <File Id="FIdB23FC778" Name="wixbackground.png" Source="C:\Users\zohan\Downloads\AudioBang\dist\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CId3C7317BF" Guid="FD782ECC-097F-4109-9186-A17FB44E0265" Win64="no">
+        <File Id="FId1D9C60BC" Name="wixfirst.png" Source="C:\Users\zohan\Downloads\AudioBang\dist\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CId7BE812A6" Guid="ACF9FCA0-44D6-4F8D-95F2-547B95F3E10F" Win64="no">
+        <File Id="FIdED19B36C" Name="AudioBang.exe" Source="C:\Users\zohan\Downloads\AudioBang\dist\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CIdB109EA3B" Guid="25C82142-52BC-4E1E-9DCA-F3D689F71D1B" Win64="no">
+        <File Id="FId2E27752B" Name="AudioBang-Class.dll" Source="C:\Users\zohan\Downloads\AudioBang\dist\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CId4215FE38" Guid="5406CD30-41B8-4761-865F-8215C7A68D31" Win64="no">
+        <File Id="FId3078A0BA" Name="AudioBang.py" Source="C:\Users\zohan\Downloads\AudioBang\dist\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CId7D6604F2" Guid="BDBA201F-FA54-4873-9C48-CB88704248AE" Win64="no">
+        <File Id="FIdFDAB5974" Name="AudioBang.png" Source="C:\Users\zohan\Downloads\AudioBang\dist\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CIdB0966656" Guid="501BC7AF-F79D-4498-8F8E-C0FFFED812A5" Win64="no">
+        <File Id="FId6373812A" Name="icon.png" Source="C:\Users\zohan\Downloads\AudioBang\dist\" />
+        <CreateFolder />
+      </Component>
+    </DirectoryRef>
+    <DirectoryRef Id="ProgramMenuFolder">
+      <Component Id="UninstallShortcut" Guid="507EA2E2-617C-4E83-B762-D1F15966C7D3">
+        <RemoveFolder Id="UninstallShortcut" Directory="ProgramMenuFolder" On="uninstall" />
+        <RegistryValue Root="HKCU" Key="Software\[Manufacturer]\[ProductName]" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+        <Shortcut Id="Uninstall" Name="Uninstall" Description="Uninstalls The Audio Player" Target="[System64Folder]msiexec.exe" Arguments="/x [ProductCode]" />
+      </Component>
+      <Component Id="CSCId2D0BCF43" Guid="2BD90B5D-4647-4ED5-A51F-EDD470AE912E">
+        <Shortcut Id="SIdA9E95079" Name="AudioBang" Target="[!FIdED19B36C]" WorkingDirectory="MyAppFolder" Icon="MyIcon" />
+        <RegistryValue Root="HKCU" Key="Software\[Manufacturer]\[ProductName]" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+        <RemoveFolder Id="CSCId2D0BCF43" Directory="ProgramMenuFolder" On="uninstall" />
+      </Component>
+    </DirectoryRef>
+    <DirectoryRef Id="MenuAppFolder">
+      <Component Id="Remove.MenuAppFolder" Guid="9E9E2D72-8BC6-4321-A122-AA6AAE95C65D">
+        <RemoveFolder Id="MenuAppFolder" On="uninstall" />
+        <RegistryValue Root="HKMU" Key="Software\[Manufacturer]\[ProductName]" Type="string" Value="" KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+    <DirectoryRef Id="credits">
+      <Component Id="CIdED226D48" Guid="C695B0E9-2216-4F41-B49C-4699B78DE302" Win64="no">
+        <File Id="FIdC97897E0" Name="credits.txt" Source="C:\Users\zohan\Downloads\AudioBang\dist\Credits\" />
+        <CreateFolder />
+      </Component>
+    </DirectoryRef>
+    <DirectoryRef Id="DesktopFolder">
+      <Component Id="CSCIdCD330619" Guid="19414F61-2FC4-4DCF-9FA3-DA4208DDBF82">
+        <Shortcut Id="SId77BAA6E1" Name="AudioBang" Target="[!FIdED19B36C]" WorkingDirectory="MyAppFolder" Icon="MyIcon" />
+        <RegistryValue Root="HKCU" Key="Software\[Manufacturer]\[ProductName]" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+        <RemoveFolder Id="CSCIdCD330619" Directory="DesktopFolder" On="uninstall" />
+      </Component>
+    </DirectoryRef>
+  </Product>
+</Wix>
