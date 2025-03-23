@@ -186,6 +186,12 @@ class AudioBang(QMainWindow):
             "3. Use Text-to-Speech under TTS > Text To Speech to generate speech from text.\n\nEnjoy!"
         )
 
+    def closeEvent(self, event):
+        # Stop any playing audio when the window is closed
+        pygame.mixer.music.stop()
+        self.tts_engine.stop()
+        event.accept()
+
 class SplashScreen(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
